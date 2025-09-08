@@ -8,18 +8,22 @@ int main(){
 
     printf("Enter the size of the array: ");
     scanf("%d", &N); //Expects pointer to an address to unpack
+
     int sampleArray[N];
+
     printf("Your array is %d elements \n" , N); //Expects actual value
     printf("Capacity of the array : %lu\n", sizeof(sampleArray)/sizeof(sampleArray[0]));
 
-
-    // Insertion Sort
-    void creationRandomArray(){ 
-        for(int i = 0; i < N ; i++ ) {
-            int value = rand() % 30;
-            printf("%d ",value);
-        }
+     srand(time(NULL)); 
+    
+    // Insertion Sort 
+    for(int i = 0; i < N ; i++ ) {
+        sampleArray[i] = rand() % 999;
+        printf("%d ", sampleArray[i]);
     }
+    printf("\n");
+
+    
 
 
 
