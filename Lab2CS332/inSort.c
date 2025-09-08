@@ -15,7 +15,7 @@ int main(){
     printf("Your array is %d elements: \n" , N); //Expects actual value
     printf("Capacity of the array :%lu\n", sizeof(sampleArray)/sizeof(sampleArray[0]));
 
-    // printf();
+    // printf(); sd
 
     // Insertion Sort
 
