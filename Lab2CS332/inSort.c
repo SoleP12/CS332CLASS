@@ -38,12 +38,6 @@ int main(){
     }
 
 
-    
-
-
-
-
-
     // printf(N);
     return 0;
 }
