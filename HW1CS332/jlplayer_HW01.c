@@ -52,11 +52,7 @@ int main(){
     UABMaxMinDiff();
     UABMaxMinDiff();
     UABMaxMinDiff();
-    UABMaxMinDiff();
-    UABMaxMinDiff();
 
-    replaceEvenWithZero();
-    replaceEvenWithZero();
     replaceEvenWithZero();
     replaceEvenWithZero();
     replaceEvenWithZero();
@@ -65,9 +61,7 @@ int main(){
     perfectSquare();
     perfectSquare();
     perfectSquare();
-    perfectSquare();
 
-    countVowels();
     countVowels();
     countVowels();
     countVowels();
