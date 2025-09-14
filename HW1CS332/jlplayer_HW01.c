@@ -5,16 +5,35 @@
 // Write the function sumOfDigits that takes a positive integer n and returns an int which is
 //the sum of its digits.
 // • If n is less than or equal to 0, return "-1"
- int sumOfDigits(){
-        printf("Hello");
+ int sumOfDigits(int n){
+    int temp = 0;
+    int sum = 0;
+    int OG = n;
+        if (n <= 0){
+            return -1;
+        }else{
+            while(n>0){
+               temp = n%10;
+               sum += temp;
+               n = n/10;
+            }
+        }
+        return printf("Sum of Digits is %d, With number being %d \n",sum,OG);
+
     }
 
 /////////////////////////////////////////////////////////////////////////
 // Write the function UABMaxMinDiff that takes an array of integers arr and returns the difference
 // between the maximum and minimum elements in the array. You can pass the size of the array as an
 // input parameter.
-int UABMaxMinDiff(){
-    printf("Hello");
+int UABMaxMinDiff(int array[]){
+   int N;
+
+    printf("Enter the size of the array: ");
+    for(int i = 0; i = array;i++){
+        scanf("%d", &N);
+    }
+    
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -43,29 +62,31 @@ int countVowels(){
 
 int main(){
 
-    sumOfDigits();
-    sumOfDigits();
-    sumOfDigits();
-    sumOfDigits();
-    sumOfDigits();
+    // sumOfDigits(23);
+    // sumOfDigits();
+    // sumOfDigits();
+    // sumOfDigits();
+    // sumOfDigits();
 
-    UABMaxMinDiff();
-    UABMaxMinDiff();
-    UABMaxMinDiff();
+    int array[10];
+    UABMaxMinDiff(array);
+    
+    // UABMaxMinDiff();
+    // UABMaxMinDiff();
 
-    replaceEvenWithZero();
-    replaceEvenWithZero();
-    replaceEvenWithZero();
+    // replaceEvenWithZero();
+    // replaceEvenWithZero();
+    // replaceEvenWithZero();
 
-    perfectSquare();
-    perfectSquare();
-    perfectSquare();
-    perfectSquare();
+    // perfectSquare();
+    // perfectSquare();
+    // perfectSquare();
+    // perfectSquare();
 
-    countVowels();
-    countVowels();
-    countVowels();
-    countVowels();
+    // countVowels();
+    // countVowels();
+    // countVowels();
+    // countVowels();
 
 
 
