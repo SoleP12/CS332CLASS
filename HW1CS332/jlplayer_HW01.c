@@ -53,6 +53,21 @@ int UABMaxMinDiff(int array[], int sizeofarray){
     }
     diff = max - min;
     return printf("The difference between max and min is: %d\n", diff);
+int UABMaxMinDiff(int array[], int sizeofarray){
+    int max = array[0];
+    int min = array[0];
+    int diff;
+    for(int i = 0; i < sizeofarray; i++){
+        if(array[i] > max){
+            max = array[i];
+        }
+        if (array[i] < min)
+        {
+            min = array[i];
+        }
+    }
+    diff = max - min;
+    return printf("The difference between max and min is: %d", diff);
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -75,7 +90,20 @@ int replaceEvenWithZero(int array[], int sizeofarray){
         printf("[%d] ", array[i]);
     }
     printf("\n");
+
+int replaceEvenWithZero(int array[], int sizeofarray){
+    for(int i = 0; i < sizeofarray;i++){
+        if(array[i] %2 == 0){
+            array[i] = 0;
+        }
+    }
+    printf("Replaced Even With Zero: ");
+    for (int i = 0; i < sizeofarray; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
 }
+
 
 /////////////////////////////////////////////////////////////////////////
 // Write the function perfectSquare that takes an integer n and returns True if n is a perfect
@@ -108,6 +136,23 @@ int perfectSquare(int N){
 }
     
 
+int perfectSquareHelper(){
+    int N;
+    printf("Enter your number: ");
+    scanf("%d", &N);
+    return N;
+}
+
+int perfectSquare(){
+    int A = perfectSquareHelper();
+    if (A % 2 ==0 && A > 0){
+        return printf("True\n");
+    }
+    else{
+        printf("False\n");
+    }
+    
+}
 
 /////////////////////////////////////////////////////////////////////////
 // Write the function countVowels that takes a string s and returns an integer. The function should count
@@ -176,6 +221,33 @@ int main(){
     int arrayrez3[] = {2,4,6};
     int sizerez3 = sizeof(arrayrez3) / sizeof(arrayrez3[0]);
     //unhighlight together testcase3
+    // sumOfDigits(23);
+    // sumOfDigits(405);
+    // sumOfDigits(0);
+    // sumOfDigits(7);
+    // sumOfDigits(-308);
+/////////////////////////////////////////////////////////////////////////
+
+    // int array[] = {3,7,2,9};
+    // int size = sizeof(array) / sizeof(array[0]);
+
+    // int array2[] = {- 2, 4, -1, 6, 5};
+    // int size = sizeof(array2) / sizeof(array2[0]);
+
+    // int array3[] = {5,5,5,5,5,5};
+    // int size = sizeof(array3) / sizeof(array3[0]);
+    // UABMaxMinDiff(array,size);
+    // UABMaxMinDiff(array2, size);
+    // UABMaxMinDiff(array3, size);
+/////////////////////////////////////////////////////////////////////////
+    // int arrayrez1[] = {1,2,3,4};
+    // int sizerez1 = sizeof(arrayrez1) / sizeof(arrayrez1[0]);
+
+    // int arrayrez2[] = {1,3,5};
+    // int sizerez2 = sizeof(arrayrez2) / sizeof(arrayrez2[0]);
+
+    // int arrayrez3[] = {2,4,6};
+    // int sizerez3 = sizeof(arrayrez3) / sizeof(arrayrez3[0]);
 
     // replaceEvenWithZero(arrayrez1,sizerez1); //unhighlight for testcase1
     // replaceEvenWithZero(arrayrez2, sizerez2); //unhighlight for testcase2
@@ -197,4 +269,25 @@ int main(){
     countVowels(s);
     // countVowels(s);
     // countVowels(s);
+}
+
+    // replaceEvenWithZero(arrayrez1,sizerez1);
+    // replaceEvenWithZero(arrayrez2, sizerez2);
+    // replaceEvenWithZero(arrayrez3,sizerez3);
+/////////////////////////////////////////////////////////////////////////
+
+    
+    perfectSquare();
+    // perfectSquare();
+    
+    // perfectSquare();
+    // perfectSquare();
+
+    // countVowels();
+    // countVowels();
+    // countVowels();
+    // countVowels();
+
+
+
 }
