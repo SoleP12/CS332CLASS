@@ -53,6 +53,7 @@ int UABMaxMinDiff(int array[], int sizeofarray){
     }
     diff = max - min;
     return printf("The difference between max and min is: %d\n", diff);
+}
 int UABMaxMinDiff(int array[], int sizeofarray){
     int max = array[0];
     int min = array[0];
@@ -90,6 +91,7 @@ int replaceEvenWithZero(int array[], int sizeofarray){
         printf("[%d] ", array[i]);
     }
     printf("\n");
+}
 
 int replaceEvenWithZero(int array[], int sizeofarray){
     for(int i = 0; i < sizeofarray;i++){
@@ -142,11 +144,10 @@ int perfectSquareHelper(){
     scanf("%d", &N);
     return N;
 }
-
-int perfectSquare(){
-    int A = perfectSquareHelper();
-    if (A % 2 ==0 && A > 0){
-        return printf("True\n");
+int perfectSquare(int N){
+    if(N<=0){
+        printf("False\n");
+        return false;
     }
     else{
         printf("False\n");
@@ -226,8 +227,8 @@ int main(){
     // sumOfDigits(0);
     // sumOfDigits(7);
     // sumOfDigits(-308);
-/////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////
     // int array[] = {3,7,2,9};
     // int size = sizeof(array) / sizeof(array[0]);
 
@@ -269,25 +270,25 @@ int main(){
     countVowels(s);
     // countVowels(s);
     // countVowels(s);
-}
+
 
     // replaceEvenWithZero(arrayrez1,sizerez1);
     // replaceEvenWithZero(arrayrez2, sizerez2);
     // replaceEvenWithZero(arrayrez3,sizerez3);
 /////////////////////////////////////////////////////////////////////////
 
+    // int alpha = perfectSquareHelper();
+    // perfectSquare(alpha);
+    // perfectSquare(16);
+    // perfectSquare(15);
+    // perfectSquare(25);
+    // perfectSquare(36);
     
-    perfectSquare();
-    // perfectSquare();
-    
-    // perfectSquare();
-    // perfectSquare();
+    /////////////////////////////////////////////////////////////////////////
 
     // countVowels();
     // countVowels();
     // countVowels();
     // countVowels();
-
-
-
 }
+
