@@ -1,11 +1,20 @@
 // gcc -o jlplayer_HW01 jlplayer_HW01.c
 // ./jlplayer_HW01
 #include <stdio.h>
+#include <stdbool.h>
+
+
 
 // Write the function sumOfDigits that takes a positive integer n and returns an int which is
 //the sum of its digits.
 // • If n is less than or equal to 0, return "-1"
- int sumOfDigits(int n){
+int sumofDigitsHelper(){
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    return number;
+}
+int sumOfDigits(int n){
     int temp = 0;
     int sum = 0;
     int OG = n;
@@ -20,7 +29,7 @@
         }
         return printf("Sum of Digits is %d, With number being %d \n",sum,OG);
 
-    }
+}
 
 /////////////////////////////////////////////////////////////////////////
 // Write the function UABMaxMinDiff that takes an array of integers arr and returns the difference
@@ -65,15 +74,31 @@ int replaceEvenWithZero(int array[], int sizeofarray){
 // Write the function perfectSquare that takes an integer n and returns True if n is a perfect
 // square, and False otherwise. A perfect square is a number that can be expressed as k * k for
 // some integer k.
-int perfectSquareHelper(int input){
-    int N;
-    printf("Enter your number");
-    scanf("%d", &N);
+int perfectSquareHelper(){
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    return number;
 }
+int perfectSquare(int N){
+    if(N<=0){
+        printf("False\n");
+        return false;
+    }
+    else{
+        for(int i = 0; i*i<=N;i++){
+            if (i*i == N){
+                printf("True\n");
+                return true;
+            }
+        }
+    }
+    printf("False\n");
+    return false;
+    
+}
+    
 
-int perfectSquare(){
-    perfectSquareHelper();
-}
 
 /////////////////////////////////////////////////////////////////////////
 // Write the function countVowels that takes a string s and returns an integer. The function should count
@@ -85,13 +110,15 @@ int countVowels(){
 /////////////////////////////////////////////////////////////////////////
 
 int main(){
-    // sumOfDigits(23);
+    // int omega = sumofDigitsHelper();
+    // sumOfDigits(omega);
+    // sumOfDigits(123);
     // sumOfDigits(405);
     // sumOfDigits(0);
     // sumOfDigits(7);
     // sumOfDigits(-308);
-/////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////
     // int array[] = {3,7,2,9};
     // int size = sizeof(array) / sizeof(array[0]);
 
@@ -118,12 +145,14 @@ int main(){
     // replaceEvenWithZero(arrayrez3,sizerez3);
 /////////////////////////////////////////////////////////////////////////
 
+    // int alpha = perfectSquareHelper();
+    // perfectSquare(alpha);
+    // perfectSquare(16);
+    // perfectSquare(15);
+    // perfectSquare(25);
+    // perfectSquare(36);
     
-    perfectSquare();
-    // perfectSquare();
-    
-    // perfectSquare();
-    // perfectSquare();
+    /////////////////////////////////////////////////////////////////////////
 
     // countVowels();
     // countVowels();
