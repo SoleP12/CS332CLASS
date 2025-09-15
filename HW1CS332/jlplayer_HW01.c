@@ -101,7 +101,7 @@ int replaceEvenWithZero(int array[], int sizeofarray){
     }
     printf("Replaced Even With Zero: ");
     for (int i = 0; i < sizeofarray; i++) {
-        printf("%d ", array[i]);
+        printf("[%d] ", array[i]);
     }
     printf("\n");
 }
@@ -229,20 +229,26 @@ int main(){
     // sumOfDigits(-308);
 
 /////////////////////////////////////////////////////////////////////////
-    // int array[] = {3,7,2,9};
-    // int size = sizeof(array) / sizeof(array[0]);
+    int array[] = {3,7,2,9};
+    int size = sizeof(array) / sizeof(array[0]);
+                        //unhighlight together testcase1
 
     // int array2[] = {- 2, 4, -1, 6, 5};
-    // int size = sizeof(array2) / sizeof(array2[0]);
+    // int size2 = sizeof(array2) / sizeof(array2[0]);
+                        //unhighlight together testcase2
 
     // int array3[] = {5,5,5,5,5,5};
-    // int size = sizeof(array3) / sizeof(array3[0]);
-    // UABMaxMinDiff(array,size);
-    // UABMaxMinDiff(array2, size);
-    // UABMaxMinDiff(array3, size);
+    // int size3 = sizeof(array3) / sizeof(array3[0]);
+                        //unhighlight together testcase3
+    
+
+    UABMaxMinDiff(array,size); //unhighlight for testcase1
+    // UABMaxMinDiff(array2, size2); //unhighlight for testcase2
+    // UABMaxMinDiff(array3, size3); //unhighlight for testcase3
 /////////////////////////////////////////////////////////////////////////
     // int arrayrez1[] = {1,2,3,4};
     // int sizerez1 = sizeof(arrayrez1) / sizeof(arrayrez1[0]);
+    //unhighlight together testcase1
 
     // int arrayrez2[] = {1,3,5};
     // int sizerez2 = sizeof(arrayrez2) / sizeof(arrayrez2[0]);
@@ -272,14 +278,16 @@ int main(){
     // countVowels(s);
 
 
-    // replaceEvenWithZero(arrayrez1,sizerez1);
-    // replaceEvenWithZero(arrayrez2, sizerez2);
-    // replaceEvenWithZero(arrayrez3,sizerez3);
+    // replaceEvenWithZero(arrayrez1,sizerez1); //unhighlight for testcase1
+    // replaceEvenWithZero(arrayrez2, sizerez2); //unhighlight for testcase2
+    replaceEvenWithZero(arrayrez3,sizerez3); //unhighlight for testcase3
 /////////////////////////////////////////////////////////////////////////
 
     // int alpha = perfectSquareHelper();
     // perfectSquare(alpha);
-    // perfectSquare(16);
+            //Unhighlight together for user input
+
+    perfectSquare(16);
     // perfectSquare(15);
     // perfectSquare(25);
     // perfectSquare(36);
