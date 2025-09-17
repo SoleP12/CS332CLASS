@@ -8,10 +8,11 @@ int main(){
     scanf("%d", &N); //Expects pointer to an address to unpack
 
     int *ptrToMemory = (int*)malloc(N * sizeof(int));
-    if(ptrToMemory== NULL){
+    if(ptrToMemory == NULL){
         printf("Memory not allocated. \n");
         return 1;
     }
+    
 
     free(ptrToMemory);
 
