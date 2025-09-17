@@ -1,17 +1,19 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
 
 int main(){
     int N;
 
-    printf("Enter the size of the array: ");
+    printf("Enter the words you want to enter: ");
     scanf("%d", &N); //Expects pointer to an address to unpack
 
-    int sampleArray[N];
+    int *ptrToMemory = (int*)malloc(N * sizeof(int));
+    if(ptrToMemory== NULL){
+        printf("Memory not allocated. \n");
+        return 1;
+    }
 
-    printf("Your array is %d elements \n" , N); //Expects actual value
-    printf("Capacity of the array : %lu\n", sizeof(sampleArray)/sizeof(sampleArray[0]));
+    free(ptrToMemory);
 
 }
 
