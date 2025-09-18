@@ -8,7 +8,7 @@ void stringreader(char **arrayCHR, int N){
     for (int i = 0; i<N;i++){
         printf("Enter Sentence: ");
         scanf("%s", charArray);
-        array[i] = malloc(strlen(charArray)+1);
+        charArray[i] = malloc(strlen(charArray)+1);
         strcpy(charArray[i], charArray);
     }
 }
