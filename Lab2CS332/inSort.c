@@ -14,7 +14,7 @@ int main(){
     printf("Your array is %d elements \n" , N); //Expects actual value
     printf("Capacity of the array : %lu\n", sizeof(sampleArray)/sizeof(sampleArray[0]));
 
-     srand(time(NULL)); 
+    srand(time(NULL)); 
     printf("Here is your unsorted Array: ");
     // Insertion Sort 
     for(int i = 0; i < N ; i++ ) {
