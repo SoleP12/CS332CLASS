@@ -1,0 +1,19 @@
+Usage-
+Designed to copy the contents of file2(provided) into file1
+no change should happen to file2 only the copying of content should take place
+
+Conetents 
+file1.txt For appending to with file2
+file2.txt For reading from to append to file1
+jlplayerlab4.pdf To see Contents of c code in pdf format
+jlplayerlab4.c To see actual c code
+
+Directions:
+In terminal switch to integrated terminal that allows for running of Lab4CS332 folder and files
+Input --- gcc -o jlplayerlab4 jlplayerlab4.c
+Input(2) --- ./jlplayerlab4 file1.txt file2.txt -- For direct command line use of file1 and file2
+Use terminal to see output 
+
+Install pdf maker
+Input in terminal --- sudo apt install enscript ghostscript
+Input in terminal --- enscript jlplayerlab4.c -o - | ps2pdf - jlplayerlab4.pdf
