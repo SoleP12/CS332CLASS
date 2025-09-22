@@ -1,24 +1,25 @@
-#Just savign the make in lab4 to use later do not want to include in submission
-
-
+# Just saving the Makefile in lab4 to use later — do not include in submission
 
 # Sample Makefile to compile C programs
 
 CC = gcc
-CFLAGS = -Wall -g #replace -g with -O when not debugging
+CFLAGS = -Wall -g  # Replace -g with -O when not debugging
 
-DEPS	= gettime.h Makefile
-OBJS	= gettime.o insertionsort.o
+DEPS    = jlplayerlab4.c Makefile
+OBJS    = jlplayerlab4.o
 
-EXECS	= insertionsort
+EXECS   = jlplayerlab4
 
-all:	$(EXECS)
+all: $(EXECS)
 
-%.o:	%.c $(DEPS)
+%.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-insertionsort:	$(OBJS)
+$(EXECS): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-clean:	
+run: $(EXECS)
+	./$(EXECS) file1.txt file2.txt
+
+clean:
 	/bin/rm -i *.o $(EXECS)
