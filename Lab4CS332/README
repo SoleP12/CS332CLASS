@@ -12,7 +12,10 @@ Directions:
 In terminal switch to integrated terminal that allows for running of Lab4CS332 folder and files
 Input --- gcc -o jlplayerlab4 jlplayerlab4.c
 Input(2) --- ./jlplayerlab4 file1.txt file2.txt -- For direct command line use of file1 and file2
-Use terminal to see output 
+Use terminal to see output
+
+Or
+In integrated Terminal run "make" then "make run"
 
 Install pdf maker
 Input in terminal --- sudo apt install enscript ghostscript
