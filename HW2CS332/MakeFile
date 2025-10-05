@@ -1,25 +1,16 @@
-# Just saving the Makefile in lab4 to use later — do not include in submission
-
-# Sample Makefile to compile C programs
 
 CC = gcc
 CFLAGS = -Wall -g  # Replace -g with -O when not debugging
 
-DEPS    = jlplayer_HMW02.c Makefile
-OBJS    = jlplayer_HMW02.o
+all:$(TARGET)
 
-EXECS   = jlplayer_HMW02
-
-all: $(EXECS)
-
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(EXECS): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
-
-run: $(EXECS)
-	./$(EXECS) 
+$(TARGET) : searchHMW2jlplayer.c
 
 clean:
-	/bin/rm -i *.o $(EXECS)
+	rm -f $(TARGET)
+
+
+
+
+
+
