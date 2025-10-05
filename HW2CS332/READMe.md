@@ -5,5 +5,5 @@ Name: Jonathan Player
 BlazerId: jlplayer
 Project #: 2
 To compile: make
-To run: ./search_jlplayer_HMW02 [targets] [starting directory]
+To run: make run
 */
