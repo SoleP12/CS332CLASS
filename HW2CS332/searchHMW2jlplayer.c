@@ -1,24 +1,17 @@
 #include <stdio.h>
-
-int flag;
-
-
-
-
-
-
-
+#include <getopt.h>
 
 int main (int argc, char *argv[]){
-     int a, b;
+    int opt;
+    while((opt = getopt(argc,argv, "Ssf")) != 1){
+        switch(opt){
+            case 'S' :break;
 
-    printf("Enter Number 1: ");
-    scanf("%d", &a);  // Notice the & before a
+            case 's' :break;
+            
+            case 'f' :break;
+        }
+    }
 
-    printf("Enter Number 2: ");
-    scanf("%d", &b);  // Notice the & before b
-
-    printf("A = %d, B = %d\n", a, b);
-
-    return 0;
+     
 }
