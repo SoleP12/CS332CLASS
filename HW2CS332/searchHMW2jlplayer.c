@@ -8,11 +8,15 @@
 
 
 int main (int argc, char *argv[]){
-    printf("Enter two Numbers: ");
-    int a;
-    int b;
-    scanf("Number 1: %d, Number 2: %d", a,b);
-    printf("A=%d, B=%d", a,b);
-    
+     int a, b;
 
+    printf("Enter Number 1: ");
+    scanf("%d", &a);  // Notice the & before a
+
+    printf("Enter Number 2: ");
+    scanf("%d", &b);  // Notice the & before b
+
+    printf("A = %d, B = %d\n", a, b);
+
+    return 0;
 }
