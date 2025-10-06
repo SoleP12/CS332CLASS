@@ -8,28 +8,39 @@
 #include <unistd.h>
 #include <time.h>
 
-void printstat(struct stat sb){
-    printf("File Type: ");
+int listDirectories(const char *dirname) {
+    struct dirent *dirent;
+    DIR *parentDir = opendir(dirname);
 
-    switch (sb.st_mode & S_)
-    {
-    case __S_IFDIR: printf("Directory: \n");
-    case __S_IFREG: printf("Regular File\n");
-    default: printf("Unknown File Type")
+    if (parentDir == NULL) {
+        fprintf(stderr, "Error opening directory: %s\n", dirname);
+        return -1;
     }
-
-
+    
+    int count = 1;
+    while ((dirent = readdir(parentDir)) != NULL) {
+        // Skip "." and ".."
+        if (dirent->d_name[0] == '.' && 
+           (dirent->d_name[1] == '\0' || 
+           (dirent->d_name[1] == '.' && dirent->d_name[2] == '\0')))
+            continue;
+        printf("[%d] %s\n", count++, dirent->d_name);
+    }
+    closedir(parentDir);
+    return 0;
 }
 
-
-
-
-
 int main (int argc, char *argv[]){
+
     int opt;
     while((opt = getopt(argc,argv, "Ssf")) != -1){
         switch(opt){
-            case 'S':          
+            case 'S': 
+             if(optind != argc -1){
+                fprintf(stderr, "Usage: %s -S <directory>\n", argv[0]);
+                return 1;
+            }      
+                listDirectories(argv[optind]);   
                 break;
 
             case 's':          
@@ -52,6 +63,14 @@ int main (int argc, char *argv[]){
         return 1;
     }
     char *fn = argv[optind];
-    printf("(FileName): %s\n",fn);
+    printf("(Directory Name): %s\n",fn);
 
 }
+/*/ 
+make run ARGS="-S HMW2CS332"
+
+make run ARGS="-S projects"
+
+
+*/  
+
