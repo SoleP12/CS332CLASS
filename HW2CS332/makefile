@@ -17,7 +17,7 @@ $(EXECS): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 run: $(EXECS)
-	./$(EXECS)
+	./$(EXECS) $(ARGS)
 
 clean:
 	/bin/rm -i *.o $(EXECS)

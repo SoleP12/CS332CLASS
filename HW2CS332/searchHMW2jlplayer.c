@@ -1,32 +1,22 @@
+
 #include <stdio.h>
 #include <dirent.h>
 #include <getopt.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <time.h>
 
+void printstat(struct stat sb){
+    printf("File Type: ");
 
-int listDirectory(){
-    DIR *directory;
-    struct dirent *dirent;
-    directory = opendir("/HMW2CS332");
-
-    if(directory == NULL)
+    switch (sb.st_mode & S_)
     {
-        printf("Directory Opening error\n");
-        return 1;
+    case __S_IFDIR: printf("Directory: \n");
+    case __S_IFREG: printf("Regular File\n");
+    default: printf("Unknown File Type")
     }
-    while ((dirent = readdir(directory)) != NULL)
-    {
-        if (dirent -> d_type == DT_REG)
-        {
-            printf("File: %s\n", dirent->d_name);
-        }
-    }
-    
-
-
-
-
-
 
 
 }
@@ -35,25 +25,33 @@ int listDirectory(){
 
 
 
-
 int main (int argc, char *argv[]){
     int opt;
-    while((opt = getopt(argc,argv, "Ssf")) != 1){
+    while((opt = getopt(argc,argv, "Ssf")) != -1){
         switch(opt){
-            case 'S':          break;
+            case 'S':          
+                break;
 
-            case 's':          break;
+            case 's':          
+                break;
 
-            case 'f':          break;
+            case 'f':          
+                break;
 
-            default: printf("This file does not exist"); break;
+            case '?': 
+                fprintf(stderr, "Unknown option: -%c\n", optopt);     
+                break;
+
+            default: 
+            printf("Escape: Ctrl + C\n"); 
+                break;
         }
     }
     if(optind != argc-1){
-        printf("File does not exist");
+        printf("Option Argument not included\n");
         return 1;
     }
     char *fn = argv[optind];
+    printf("(FileName): %s\n",fn);
 
-     
 }
