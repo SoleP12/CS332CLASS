@@ -16,7 +16,7 @@ int listDirectories(const char *dirname) {
         fprintf(stderr, "Error opening directory: %s\n", dirname);
         return -1;
     }
-    
+
     int count = 1;
     while ((dirent = readdir(parentDir)) != NULL) {
         // Skip "." and ".."
@@ -67,7 +67,7 @@ int main (int argc, char *argv[]){
 
 }
 /*/ 
-make run ARGS="-S HMW2CS332"
+make run ARGS="-S HMW2CS332" 
 
 make run ARGS="-S projects"
 
