@@ -39,8 +39,7 @@ int listDirectories(const char *dirname) {
         if (showFilesOnly && S_ISDIR(sb.st_mode))
             continue;
         
-        printf("[%d] %s (size: ", count++, dirent->d_name);
-        printSize(fullPath);
+        printf("[%d] %s ", count++, dirent->d_name);
         
         printf(" ---- Permissions: ");
         permissions(fullPath);
@@ -93,8 +92,6 @@ int permissions(const char *path){
     return 0;
 
 }
-
-
 int lastAccess(const char *path){
      struct stat sb;
     if (stat(path, &sb) == -1) {
@@ -109,12 +106,6 @@ int lastAccess(const char *path){
 
     return 0;
 } 
-
-
-
-
-
-
 
 int main (int argc, char *argv[]){
     int opt;
@@ -155,5 +146,4 @@ int main (int argc, char *argv[]){
 
 /*/ 
 make run ARGS="-S projects"
-
 */  

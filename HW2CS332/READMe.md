@@ -5,5 +5,6 @@ Name: Jonathan Player
 BlazerId: jlplayer
 Project #: 2
 To compile: make
-To run: make run
+To run: make run ARGS="-S projects"
 */
+Was only able to implemt -S tag with projects folder
