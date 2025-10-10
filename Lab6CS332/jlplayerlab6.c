@@ -71,7 +71,7 @@ int main() {
     for (int i = 0; i < count; i++) {
         displayListing(list_items[i]);
     }
-
+    
     fclose(fptr);
     return 0;
 }
