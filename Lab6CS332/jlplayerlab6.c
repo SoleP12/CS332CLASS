@@ -44,13 +44,16 @@ void displayListing(struct listing item) {
         item.price, item.minimum_nights, item.number_of_reviews,
         item.calculated_host_listings_count, item.availability_365);
 }
+int writeToFile(){
+
+}
 
 // Main function to read and display listings
 int main() {
     //Example2c
     FILE *fptr = fopen("listings.csv", "r");
     if (fptr == NULL) {
-        perror("Failed to open file");
+        perror("Error Opening File");
         return 1;
     }
 
@@ -59,6 +62,7 @@ int main() {
 
     // Example 2d
     int count = 0;
+
     // Skip header line
     fgets(line, LINESIZE, fptr);
 
@@ -70,6 +74,16 @@ int main() {
     //Example 2e Display listings
     for (int i = 0; i < count; i++) {
         displayListing(list_items[i]);
+    }
+
+    FILE *fptr = fopen("listings2.csv", "w");
+    if (fptr == NULL) {
+        perror("Error Opening File");
+        return 1;
+    }
+
+     while (fgets(line, LINESIZE, fptr) != NULL && count < MAX_LISTINGS) {
+        list_items[count++] = getfields(line);
     }
     
     fclose(fptr);
