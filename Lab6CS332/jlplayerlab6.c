@@ -44,16 +44,49 @@ void displayListing(struct listing item) {
         item.price, item.minimum_nights, item.number_of_reviews,
         item.calculated_host_listings_count, item.availability_365);
 }
-int writeToFile(){
+
+intqsort(){
 
 }
+
+
+
+
+
+int writeToFile(struct listing list_items[], int count){
+    FILE *fptr = fopen("listings2.csv", "w");
+    if (fptr == NULL) {
+        printf("Error Opening File");
+        return 1;
+    }
+
+    fputs("id,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,room_type,price,minimum_nights,number_of_reviews,calculated_host_listings_count,availability_365\n", fptr);
+    for (int i = 0; i < count; i++) {
+    fprintf(fptr, "%d,%d,%s,%s,%s,%.6f,%.6f,%s,%.2f,%d,%d,%d,%d\n",
+        list_items[i].id, list_items[i].host_id, list_items[i].host_name,
+        list_items[i].neighbourhood_group, list_items[i].neighbourhood,
+        list_items[i].latitude, list_items[i].longitude, list_items[i].room_type,
+        list_items[i].price, list_items[i].minimum_nights,
+        list_items[i].number_of_reviews,
+        list_items[i].calculated_host_listings_count,
+        list_items[i].availability_365);
+}
+    fclose(fptr);
+    return 0;
+}
+
+
+
+
+
+
 
 // Main function to read and display listings
 int main() {
     //Example2c
     FILE *fptr = fopen("listings.csv", "r");
     if (fptr == NULL) {
-        perror("Error Opening File");
+        printf("Error Opening File");
         return 1;
     }
 
@@ -75,22 +108,10 @@ int main() {
     for (int i = 0; i < count; i++) {
         displayListing(list_items[i]);
     }
-
-    FILE *fptr = fopen("listings2.csv", "w");
-    if (fptr == NULL) {
-        perror("Error Opening File");
-        return 1;
-    }
-
-     while (fgets(line, LINESIZE, fptr) != NULL && count < MAX_LISTINGS) {
-        list_items[count++] = getfields(line);
-    }
     
     fclose(fptr);
     return 0;
 }
-
-
 
 // gcc -o jlplayerlab6 jlplayerlab6.c
 // ./jlplayerlab6
