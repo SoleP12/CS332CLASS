@@ -5,7 +5,7 @@
 #define MAX_LISTINGS 1000
 #define LINESIZE 1024
 
-// Define struct outside of functions
+//Example2a Define struct outside of functions
 struct listing {
     int id, host_id, minimum_nights, number_of_reviews;
     int calculated_host_listings_count, availability_365;
@@ -13,7 +13,7 @@ struct listing {
     float latitude, longitude, price;
 };
 
-// Function to parse a line into a struct listing
+//Example 2b Function to parse a line into a struct listing
 struct listing getfields(char* line) {
     struct listing item;
 
@@ -47,6 +47,7 @@ void displayListing(struct listing item) {
 
 // Main function to read and display listings
 int main() {
+    //Example2c
     FILE *fptr = fopen("listings.csv", "r");
     if (fptr == NULL) {
         perror("Failed to open file");
@@ -55,8 +56,9 @@ int main() {
 
     char line[LINESIZE];
     struct listing list_items[MAX_LISTINGS];
-    int count = 0;
 
+    // Example 2d
+    int count = 0;
     // Skip header line
     fgets(line, LINESIZE, fptr);
 
@@ -65,7 +67,7 @@ int main() {
         list_items[count++] = getfields(line);
     }
 
-    // Display listings
+    //Example 2e Display listings
     for (int i = 0; i < count; i++) {
         displayListing(list_items[i]);
     }
