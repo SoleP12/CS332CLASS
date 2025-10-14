@@ -1,0 +1,4 @@
+ls -l
+echo Jonathan Player
+echo Howdy TA
+sleep 4
