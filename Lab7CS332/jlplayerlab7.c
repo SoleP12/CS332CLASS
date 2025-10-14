@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
         time_t end_time = time(NULL);
         char *end_str = ctime(&end_time);
 
-        printf("--------\n");
+        printf("-----\n");
 
         if (WIFEXITED(status)) {
             printf("Exit Status: %d\n", WEXITSTATUS(status));
