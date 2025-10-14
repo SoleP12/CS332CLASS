@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
         perror("File error");
         return 1;
     }
-
+    
     char line[MAX_LINE];
     char *args[MAX_ARGS];
 
@@ -62,7 +62,6 @@ int main(int argc, char *argv[]) {
             perror("fork failed");
         }
     }
-
     fclose(in);
     fclose(out);
     return 0;
