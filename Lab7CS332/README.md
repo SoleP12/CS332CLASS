@@ -2,6 +2,6 @@
 Name:Jonathan Player
 BlazerId: jlplayer
 Lab #: 7
-To compile: <instructions for compiling the program>
-To run: <instructions to run the program>
+To compile: gcc -o jlplayerlab7 jlplayerlab7.c
+To run: ./jlplayerlab7 command.txt output.log
 */
