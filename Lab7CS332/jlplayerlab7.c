@@ -5,11 +5,17 @@
 #include <string.h>
 #include <time.h>
 
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
     pid_t pid;
     int status;
 
+    FILE *logFile = freopen(argv[2], "w", stdout);
     FILE *filePtr = fopen(argv[1], "r");
+
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s <input_file> <output_file>\n", argv[0]);
+        return 1;
+    }
     
     if (filePtr == NULL) {
         printf("Error opening file.\n");
@@ -50,8 +56,8 @@ int main(int argc, char **argv) {
             printf("Command did not terminate normally.\n");
         }
 
-        printf("End Time:   %s\n", end_str);
-        printf("----------------------------------------\n");
+        printf("TimeEnd:   %s\n", end_str);
+        printf("|||||||||||||||||\n");
         
     }
 
@@ -115,4 +121,4 @@ int main(int argc, char **argv) {
 
 
 // gcc -o jlplayerlab7 jlplayerlab7.c
-// ./jlplayerlab7 command.txt
+// ./jlplayerlab7 command.txt output.log
