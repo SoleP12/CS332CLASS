@@ -76,11 +76,6 @@ int writeToFile(struct listing list_items[], int count){
 }
 
 
-
-
-
-
-
 // Main function to read and display listings
 int main() {
     //Example2c
