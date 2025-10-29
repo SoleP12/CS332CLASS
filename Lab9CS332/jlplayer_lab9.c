@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <signal.h>
+#include <stdlib.h>
 
 static void sig_usr(int signo) {
     if (signo == SIGUSR1) {
