@@ -56,5 +56,5 @@ int main(int argc, char **argv) {
 // • SIGUSR1 and SIGUSR2: These are user-defined signals, for use in application
 // programs.
 
-// gcc -o jlplayer_lab9 jlplayer_lab9.c
-// ./jlplayer_lab9
+//  gcc -o forkexecvp forkexecvp.c
+// ./forkexcvp
