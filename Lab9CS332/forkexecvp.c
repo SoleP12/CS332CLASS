@@ -56,5 +56,4 @@ int main(int argc, char **argv) {
 // • SIGUSR1 and SIGUSR2: These are user-defined signals, for use in application
 // programs.
 
-//  gcc -o forkexecvp forkexecvp.c
-// ./forkexcvp
+
