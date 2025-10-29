@@ -13,13 +13,18 @@ static void sig_usr(int signo) {
 
 
 
-
-
-
-
-
-int main(){
-    printf("Hello\n");
+int main(void) {
+    if (signal(SIGUSR1, sig_usr) == SIG_ERR) {
+        printf("can't catch SIGUSR1\n");
+        exit(-1);
+    }
+    if (signal(SIGUSR2, sig_usr) == SIG_ERR) {
+        printf("can't catch SIGUSR2\n");
+        exit(-1);
+    }
+    for ( ; ; )
+        pause();
+    return 0;
 }
 
 
