@@ -10,21 +10,20 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-void controlC(int sig){
-    signal(SIGINT,SIG_DFL);
-    printf("You interupted the child proccess with ControlC");
-}
+// void controlC(int sig){
+//     signal(SIGINT,SIG_DFL);
+//     printf("You interupted the child proccess with ControlC");
+// }
 
 
-void controlZ(int sign){
-    signal(SIGTSTP,SIG_DFL);
-    printf("You interupted the child proccess with ControlZ");
+// void controlZ(int sign){
+//     signal(SIGTSTP,SIG_DFL);
+//     printf("You interupted the child proccess with ControlZ");
    
-}
+// }
 
 
 int main(int argc, char **argv) {
-    
     pid_t pid;
     int status;
 
@@ -41,9 +40,11 @@ int main(int argc, char **argv) {
 	perror("execvp");
 	exit(-1);
     } else if (pid > 0) { /* this is the parent process */
-        signal(SIGINT,SIG_DFL);
-        signal(SIGTSTP, SIG_DFL);
+        signal(SIGINT,SIG_IGN);
+        signal(SIGTSTP, SIG_IGN);
+
         signal(SIGQUIT, SIG_DFL);
+
         printf("Wait for the child process to terminate\n");
         wait(&status);                  /* wait for the child process to terminate */
         if (WIFEXITED(status)) {        /* child process terminated normally */
@@ -63,7 +64,6 @@ int main(int argc, char **argv) {
 }
 //  * To Compile -  gcc -Wall forkexecvp.c
 //  * To run - ./a.out ./hw1 1000
-//  * 
 //  * To Run: ./a.out <command> [args]
 
 // SIGINT: Interrupt a process from keyboard (e.g., pressing Control-C). The process
