@@ -10,45 +10,44 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-void controlC(int sig){
-    ssize_t n;
-    char buf[2];
-    signal(sig, SIG_IGN); /* ignore signal first */
-    printf("Do you really want to do this: [Y/N]? ");
-    fflush(stdout);
-    n = read(STDIN_FILENO, buf, 2);
-    if ( buf[0] == 'Y' ) {
-    raise(SIGTERM); // or kill(0, SIGTERM); // or exit (-1);
-    } else {
-    printf("Ignoring signal, be careful next time!\n");
-    fflush(stdout);
-    }
-    signal(sig, controlC); /* reinstall the signal handler */
-    printf("You interupted the child proccess with ControlC");
-}
+// void controlC(int sig){
+//     ssize_t n;
+//     char buf[2];
+//     signal(sig, SIG_IGN); /* ignore signal first */
+//     printf("Do you really want to do this: [Y/N]? ");
+//     fflush(stdout);
+//     n = read(STDIN_FILENO, buf, 2);
+//     if ( buf[0] == 'Y' ) {
+//     raise(SIGTERM); // or kill(0, SIGTERM); // or exit (-1);
+//     } else {
+//     printf("Ignoring signal, be careful next time!\n");
+//     fflush(stdout);
+//     }
+//     signal(sig, controlC); /* reinstall the signal handler */
+//     printf("You interupted the child proccess with ControlC");
+// }
 
 
-void controlZ(int sign){
-    ssize_t n;
-    char buf[2];
-    signal(sign, SIG_IGN); /* ignore signal first */
-    printf("Do you really want to do this: [Y/N]? ");
-    fflush(stdout);
-    n = read(STDIN_FILENO, buf, 2);
-    if ( buf[0] == 'Y' ) {
-    raise(SIGTERM); // or kill(0, SIGTERM); // or exit (-1);
-    } else {
-    printf("Ignoring signal, be careful next time!\n");
-    fflush(stdout);
-    }
-    signal(sign, controlZ); /* reinstall the signal handler */
-    printf("You interupted the child proccess with ControlZ");
+// void controlZ(int sign){
+//     ssize_t n;
+//     char buf[2];
+//     signal(sign, SIG_IGN); /* ignore signal first */
+//     printf("Do you really want to do this: [Y/N]? ");
+//     fflush(stdout);
+//     n = read(STDIN_FILENO, buf, 2);
+//     if ( buf[0] == 'Y' ) {
+//     raise(SIGTERM); // or kill(0, SIGTERM); // or exit (-1);
+//     } else {
+//     printf("Ignoring signal, be careful next time!\n");
+//     fflush(stdout);
+//     }
+//     signal(sign, controlZ); /* reinstall the signal handler */
+//     printf("You interupted the child proccess with ControlZ");
    
-}
+// }
 
 
 int main(int argc, char **argv) {
-    signal(SIGINT, &controlZ);
     
     pid_t pid;
     int status;
@@ -62,18 +61,13 @@ int main(int argc, char **argv) {
     if (pid == 0) { /* this is child process */
         execvp(argv[1], &argv[1]);
 
-
-
-        
-
-
-
-
-
         printf("If you see this statement then execl failed ;-(\n");
 	perror("execvp");
 	exit(-1);
     } else if (pid > 0) { /* this is the parent process */
+        signal(SIGINT,SIG_DFL);
+        signal(SIGTSTP, SIG_DFL);
+        
         printf("Wait for the child process to terminate\n");
         wait(&status);                  /* wait for the child process to terminate */
         if (WIFEXITED(status)) {        /* child process terminated normally */
@@ -87,7 +81,6 @@ int main(int argc, char **argv) {
         perror("fork");                 /* use perror to print the system error message */
         exit(EXIT_FAILURE);
     }
-    
     printf("[%ld]: Exiting program .....\n", (long)getpid());
 
     return 0;
