@@ -60,7 +60,6 @@ int main(int argc, char **argv) {
     }
     printf("[%ld]: Exiting program .....\n", (long)getpid());
     return 0;
-    
 }
 //  * To Compile -  gcc -Wall forkexecvp.c
 //  * To run - ./a.out ./hw1 1000
