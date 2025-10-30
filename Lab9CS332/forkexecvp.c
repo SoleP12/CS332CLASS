@@ -8,6 +8,16 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
+
+void controlC(int sig){
+    return 0;
+}
+void controlZ(int sig){
+    return 0 ;
+}
+
+
 
 int main(int argc, char **argv) {
     pid_t pid;
@@ -21,21 +31,24 @@ int main(int argc, char **argv) {
     pid = fork();
     if (pid == 0) { /* this is child process */
         execvp(argv[1], &argv[1]);
+        
+        signal(SIGINT, &controlZ);
+
         printf("If you see this statement then execl failed ;-(\n");
 	perror("execvp");
 	exit(-1);
     } else if (pid > 0) { /* this is the parent process */
         printf("Wait for the child process to terminate\n");
-        wait(&status); /* wait for the child process to terminate */
-        if (WIFEXITED(status)) { /* child process terminated normally */
+        wait(&status);                  /* wait for the child process to terminate */
+        if (WIFEXITED(status)) {        /* child process terminated normally */
             printf("Child process exited with status = %d\n", WEXITSTATUS(status));
-        } else { /* child process did not terminate normally */
+        } else {                        /* child process did not terminate normally */
             printf("Child process did not terminate normally!\n");
-            /* look at the man page for wait (man 2 wait) to determine
-               how the child process was terminated */
+                                        /* look at the man page for wait (man 2 wait) to determine
+                                        how the child process was terminated */
         }
-    } else { /* we have an error */
-        perror("fork"); /* use perror to print the system error message */
+    } else {                            /* we have an error */
+        perror("fork");                 /* use perror to print the system error message */
         exit(EXIT_FAILURE);
     }
     
@@ -43,6 +56,9 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+// ./a.out /home/UAB/puri/CS332/shared/hw1 1000
+//  * To Compile: gcc -Wall forkexecvp.c
+//  * To Run: ./a.out <command> [args]
 
 // SIGINT: Interrupt a process from keyboard (e.g., pressing Control-C). The process
 // is terminated.
