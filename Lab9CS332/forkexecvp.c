@@ -61,8 +61,9 @@ int main(int argc, char **argv) {
 
     return 0;
 }
-// ./a.out /home/UAB/puri/CS332/shared/hw1 1000
-//  * To Compile: gcc -Wall forkexecvp.c
+//  * To Compile -  gcc -Wall forkexecvp.c
+//  * To run - ./a.out ./hw1 1000
+//  * 
 //  * To Run: ./a.out <command> [args]
 
 // SIGINT: Interrupt a process from keyboard (e.g., pressing Control-C). The process
