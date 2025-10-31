@@ -19,7 +19,7 @@ $(EXECS): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 run: $(EXECS)
-	./$(EXECS) file1.txt file2.txt
-
+	./$(EXECS) file1.txt
+	
 clean:
 	/bin/rm -i *.o $(EXECS)
