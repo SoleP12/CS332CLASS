@@ -2,5 +2,5 @@
 
 
 int main(int argc, char* argv[]){
-    printf("Directory Name Entered --- %s", argv[0]);
+    printf("Directory Name Entered --- %s", argv[1]);
 }
