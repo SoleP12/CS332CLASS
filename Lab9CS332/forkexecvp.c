@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
     } else if (pid > 0) { /* this is the parent process */
         // Control C is ignored by the operating system when pressed
         signal(SIGINT,SIG_IGN);
+        
 
         // Changes functionality and allows Control Z to be ignored by the operating system when pressed
         signal(SIGTSTP, SIG_IGN);
