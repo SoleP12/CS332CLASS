@@ -1,11 +1,11 @@
 // void controlC(int sig){
-//     signal(SIGINT,SIG_DFL);
+//     signal(SIGINT,SIG_IGN);
 //     printf("You interupted the child proccess with ControlC");
 // }
 
 
 // void controlZ(int sign){
-//     signal(SIGTSTP,SIG_DFL);
+//     signal(SIGTSTP,SIG_IGN);
 //     printf("You interupted the child proccess with ControlZ");
    
 // }
@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
         // Changes functionality and allows Control Z to be ignored by the operating system when pressed
         signal(SIGTSTP, SIG_IGN);
 
-        // Pressing Control \ will terminate the program
+        // Pressing Control \ will terminate the program AKA a quit Signal
         signal(SIGQUIT, SIG_DFL);
 
         printf("Wait for the child process to terminate\n");
