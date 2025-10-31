@@ -1,15 +1,3 @@
-/* Simple program to illustrate the use of fork-exec-wait pattern. 
- * This version uses execvp and command-line arguments to create a new process.
- * To Compile: gcc -Wall forkexecvp.c
- * To Run: ./a.out <command> [args]
- */
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <signal.h>
-
 // void controlC(int sig){
 //     signal(SIGINT,SIG_DFL);
 //     printf("You interupted the child proccess with ControlC");
@@ -21,6 +9,13 @@
 //     printf("You interupted the child proccess with ControlZ");
    
 // }
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
 
 
 int main(int argc, char **argv) {
@@ -35,14 +30,17 @@ int main(int argc, char **argv) {
     pid = fork();
     if (pid == 0) { /* this is child process */
         execvp(argv[1], &argv[1]);
-
         printf("If you see this statement then execl failed ;-(\n");
 	perror("execvp");
 	exit(-1);
     } else if (pid > 0) { /* this is the parent process */
+        // Control C is ignored by the operating system when pressed
         signal(SIGINT,SIG_IGN);
+
+        // Changes functionality and allows Control Z to be ignored by the operating system when pressed
         signal(SIGTSTP, SIG_IGN);
 
+        // Pressing Control \ will terminate the program
         signal(SIGQUIT, SIG_DFL);
 
         printf("Wait for the child process to terminate\n");
