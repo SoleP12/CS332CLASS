@@ -3,9 +3,9 @@ BlazerId: jlplayer
 Project #: Lab9CS332
 Title--Fork() and Exec() with Signal Handle
 
-F
-
-Description - This lab introduces signal manipulation to us in C. With this prgram we are able to change specific signals like control z and cotrol c to allow them to preform different actions than they are normally used for. In the program when pressing control z typically it is used to suspend the process however changing the function of signal in the child process allows me to ignore when the button is pressed and vice versa for control C.
+Description - This lab introduces signal manipulation to us in C. With this prgram we are able to change specific signals like control z and cotrol c to allow them 
+to preform different actions than they are normally used for. In the program when pressing control z typically it is used to suspend the process however changing the 
+function of signal in the child process allows me to ignore when the button is pressed and vice versa for control C.
 
 Functionality-----------
 First Compile using -- gcc -Wall forkexecvp.c
