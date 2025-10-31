@@ -1,11 +1,8 @@
-
-
 CC = gcc
 CFLAGS = -Wall -g  # Replace -g with -O when not debugging
 
 DEPS    = jlplayerHMW3.c Makefile
 OBJS    = jlplayerHMW3.o
-
 EXECS   = jlplayerHMW3
 
 all: $(EXECS)
@@ -17,7 +14,7 @@ $(EXECS): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 run: $(EXECS)
-	./$(EXECS) Directory
+	./$(EXECS) $(DIR)
 
 clean:
 	/bin/rm -i *.o $(EXECS)
