@@ -4,20 +4,21 @@
 #include <stdlib.h>
 
 
-void getDirectory(const char *directName){
-    DIR  *dp;
+void getDirectory(const char *directName) {
+    DIR *dp;
     struct dirent *dirp;
-    
-    if((dp = opendir("c:\\src\\")) == NULL){
-        while((dp = readdir(dp)) != NULL){
-            printf("%s\n", dirp -> d_name);
-        }
-        closedir(dp);
-    }else{
-        perror("");
-        return EXIT_FAILURE;
+
+    dp = opendir(directName);
+    if (dp == NULL) {
+        perror("opendir");
+        return;
     }
 
+    while ((dirp = readdir(dp)) != NULL) {
+        printf("%s\n", dirp->d_name);
+    }
+
+    closedir(dp);
 }
 
 
@@ -29,7 +30,7 @@ void getDirectory(const char *directName){
 int main(int argc, char* argv[]){
     printf("Directory Name --- %s", argv[1]);
 
-
+    getDirectory(argv[1]);
 
 
 }
