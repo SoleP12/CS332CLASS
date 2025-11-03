@@ -25,8 +25,8 @@
 char*filetype (unsigned char type){
     char *str;
     switch(type){
-        case DT_DIR: str = "Directory"; break;
-        case DT_REG: str = "File"; break;
+        case DT_DIR: str = "---Directory---"; break;
+        case DT_REG: str = "---File---"; break;
         default: str = "UNKNOWN";
     }
     return str;
@@ -35,7 +35,7 @@ char*filetype (unsigned char type){
 void printFileSIZE(const char *filename){
     struct stat sb;
     if(stat(filename, &sb) == 0){
-        printf("|File Size == %lld|", (long long) sb.st_size);
+        printf(" --- File Size == %lld|", (long long) sb.st_size);
     }
 }
 
@@ -68,8 +68,6 @@ void getDirectory(const char *directName) {
     }
     closedir(dp);
 }
-
-
 
 int main(int argc, char* argv[]){
     if(argc < 2){
