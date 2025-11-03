@@ -2,8 +2,8 @@
 Name: Jonathan Player
 BlazerId: jlplayer
 Project #: Homework 3
-To compile: 
-To run:
+To compile: make jlplayerHMW3
+To run: make jlplayerHMW3 projects ,  ./jlplayerHMW3 projects
 */
 
 
