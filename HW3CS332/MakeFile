@@ -1,10 +1,10 @@
-CC = gcc
+CC=gcc
 CFLAGS = -Wall -g  # Replace -g with -O when not debugging
 
 DEPS    = jlplayerHMW3.c Makefile
 OBJS    = jlplayerHMW3.o
 EXECS   = jlplayerHMW3
-DIR     = HMW3CS332/projects
+DIR     = projects
 
 all: $(EXECS)
 
