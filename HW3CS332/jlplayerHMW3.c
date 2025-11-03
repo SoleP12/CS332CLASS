@@ -23,7 +23,7 @@
 //     return "0";
 // }
 
-// Determine the File Type 
+// Determine the Type of File that is in the Overall Directory
 char*filetype (unsigned char type){
     char *str;
     switch(type){
@@ -34,12 +34,15 @@ char*filetype (unsigned char type){
     return str;
 }
 
+// Determines the File Size for Files only
 void printFileSIZE(const char *filename){
     struct stat sb;
     if(stat(filename, &sb) == 0){
         printf(" --- File Size = %lld bytes | ", (long long) sb.st_size);
     }
 }
+
+// Determines the word count for file with
 void wordCount(const char *Directory){
     FILE *filp;
     int count = 0;
@@ -49,7 +52,6 @@ void wordCount(const char *Directory){
         printf("File Not Found\n");
         return;
     }
-
     while((c = fgetc(filp)) != EOF){
         if((c == ' ' || c == '\n' || c == '\t') &&
             (prev != ' ' && prev != '\n' && prev != '\t'))
@@ -61,6 +63,8 @@ void wordCount(const char *Directory){
     return;
 }
 
+
+// Takes 
 void getDirectory(const char *directName) {
     DIR *dp;
     struct dirent *dirp;
@@ -70,7 +74,6 @@ void getDirectory(const char *directName) {
         perror("Directory Name Invalid");
         return;
     }
-
      while ((dirp = readdir(dp)) != NULL) {
         // Skip "." and ".."
         if (dirp->d_type == DT_DIR && 
@@ -104,6 +107,8 @@ void getDirectory(const char *directName) {
     }
     closedir(dp);
 }
+
+
 
 int main(int argc, char* argv[]){
 
