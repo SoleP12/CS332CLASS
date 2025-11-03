@@ -23,7 +23,7 @@
 //     return "0";
 // }
 
-
+// Determine the File Type 
 char*filetype (unsigned char type){
     char *str;
     switch(type){
@@ -70,6 +70,7 @@ void getDirectory(const char *directName) {
         perror("Directory Name Invalid");
         return;
     }
+
      while ((dirp = readdir(dp)) != NULL) {
         // Skip "." and ".."
         if (dirp->d_type == DT_DIR && 
@@ -105,6 +106,7 @@ void getDirectory(const char *directName) {
 }
 
 int main(int argc, char* argv[]){
+
     if(argc < 2){
         printf("Usage: %s <dirname>\n", argv[0]);
         exit(-1);
