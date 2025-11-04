@@ -7,11 +7,11 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+// Had to define these as my computer was not recognizing dirent
 #ifndef DT_DIR
 #define DT_DIR     4
 #define DT_REG     8
 #endif
-
 
 // char *filetype(const char *path) {
 //     struct stat st;
@@ -23,8 +23,8 @@
 //     return "0";
 // }
 
-// Determine the Type of File that is in the Overall Directory
-char*filetype (unsigned char type){
+// Determine the Type of File that is in the argv[1] directory
+char* filetype (unsigned char type){
     char *str;
     switch(type){
         case DT_DIR: str = "Directory"; break;
@@ -42,12 +42,12 @@ void printFileSIZE(const char *filename){
     }
 }
 
-// Determines the word count for file with
-void wordCount(const char *Directory){
+// Determines the word count for file
+void wordCount(const char *filename){
     FILE *filp;
     int count = 0;
     char c, prev = ' ';
-    filp = fopen(Directory, "r");
+    filp = fopen(filename, "r");
     if(filp == NULL){
         printf("File Not Found\n");
         return;
@@ -64,7 +64,7 @@ void wordCount(const char *Directory){
 }
 
 
-// Takes 
+// Function to Open directory Name and use wordcount function and file size for each forked file
 void getDirectory(const char *directName) {
     DIR *dp;
     struct dirent *dirp;
@@ -111,7 +111,7 @@ void getDirectory(const char *directName) {
 
 
 int main(int argc, char* argv[]){
-
+    //Checks if the arguments are less then 2 and prints out that the user should enter a directory name
     if(argc < 2){
         printf("Usage: %s <dirname>\n", argv[0]);
         exit(-1);
@@ -124,7 +124,11 @@ int main(int argc, char* argv[]){
         exit(-1);
     }
 
-    printf("Directory Name --- %s with -%s- Directory\n", argv[0], argv[1]);
+    // Prints the C file Used and teh Directory Used 
+    printf(".C File Used --- %s with -%s- Directory\n", argv[0], argv[1]);
+
+
+    //Uses the first argument of the directoy as a parameter for the get directory function
     getDirectory(argv[1]);
     return 0;
 

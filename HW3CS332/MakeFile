@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS = -Wall -g  # Replace -g with -O when not debugging
+CFLAGS = -Wall -g 
 
-DEPS    = jlplayerHMW3.c Makefile
+DEPS    = Makefile
 OBJS    = jlplayerHMW3.o
 EXECS   = jlplayerHMW3
 DIR     = projects
