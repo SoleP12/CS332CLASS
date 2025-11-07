@@ -1,5 +1,5 @@
 /* Sample solution to Lab-7 assignment.
- * To Compile: gcc -Wall -o lab7 lab7_solution.c
+ * To Compile: gcc -Wall -o jlplayerlab10 jlplayerlab10.c
  * To Run: ./lab7 commands.txt
  */
 #include <stdio.h>
