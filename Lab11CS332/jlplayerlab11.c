@@ -5,6 +5,9 @@
 int pipe(int pipefd[2]);
 
 
+
+
+
 int main(int argc, char *argv[]){
     if (argc != 3) {
         printf("Usage: %s <command1> <command2>\n", argv[0]);
