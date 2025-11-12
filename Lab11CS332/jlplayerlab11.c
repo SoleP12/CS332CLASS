@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <unistd.h>
+
+int pipe(int pipefd[2]);
 
 
 
