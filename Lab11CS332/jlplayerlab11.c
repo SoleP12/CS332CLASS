@@ -9,8 +9,13 @@
 
 int main() {
 
+    // fp points to the pipe and allows access to the command's output
     FILE *fp;
+
+    // Stores the ouput from command
     char line[BUFSIZ];
+
+    // Holds the command line entered
     char command[1024];
 
     // Initalize Infinite Loop of asking for commands
