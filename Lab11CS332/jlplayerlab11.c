@@ -6,13 +6,6 @@
 * To Compile: gcc -Wall jlplayerlab11.c
 * To Run: ./a.out <command>
 */
-
-
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 int main() {
 
     FILE *fp;
