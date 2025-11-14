@@ -4,8 +4,9 @@
 
 /*
 * To Compile: gcc -Wall jlplayerlab11.c
-* To Run: ./a.out <command>
+* To Run: ./a.out
 */
+
 int main() {
 
     FILE *fp;
