@@ -9,25 +9,25 @@
 #include <unistd.h>
 
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
+struct threadVari{
 
+};
 double *a=NULL, sum=0.0;
 int    N, size;
+
 
 void *compute(void *arg) {
     int myStart, myEnd, myN, i;
     long tid = (long)arg;
-
     // determine start and end of computation for the current thread
     myN = N/size;
     myStart = tid*myN;
     myEnd = myStart + myN;
     if (tid == (size-1)) myEnd = N;
-
     // compute partial sum
     double mysum = 0.0;
     for (i=myStart; i<myEnd; i++)
       mysum += a[i];
-
     // grab the lock, update global sum, and release lock
     pthread_mutex_lock(&mutex);
     sum += mysum;
