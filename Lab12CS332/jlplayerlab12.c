@@ -10,7 +10,9 @@
 
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 struct threadVari{
-  
+    
+
+
 
 };
 double *a=NULL, sum=0.0;
