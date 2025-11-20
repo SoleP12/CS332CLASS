@@ -9,17 +9,22 @@
 #include <unistd.h>
 
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
+
 struct threadVari{
-    
-
-
-
+  double *a; // 
+  double *sum; //
+  int N; //
+  int size; //
+  long tid; //
 };
-double *a=NULL, sum=0.0;
-int    N, size;
+double *a=NULL, sum=0.0; 
+int N, size;
 
 
 void *compute(void *arg) {
+    struct ThreadData *data = (struct ThreadData *)arg;
+
+
     int myStart, myEnd, myN, i;
     long tid = (long)arg;
     // determine start and end of computation for the current thread
