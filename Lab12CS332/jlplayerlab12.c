@@ -12,35 +12,44 @@ pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
 struct threadVari{
 
-  double *a; // 
-  double *sum; //
-  int N; //
-  int size; //
-  long tid; //
-  
+  double *a; // Points to the array
+  double *sum; // Points to final sum
+  int N; // The total number of elements
+  int size; // The number of threads
+  long tid; // The thread Identification Number
 };
+
 double *a=NULL, sum=0.0; 
 int N, size;
 
 
 void *compute(void *arg) {
-    struct ThreadData *data = (struct ThreadData *)arg;
+    struct threadVari *data = (struct threadVari *)arg;
+
+    long tid  = data->tid;
+    int N     = data->N;
+    int size  = data->size;
+    double *a = data->a;
+
+    int myN = N / size;
+    int myStart = tid *myN;
+    int myEnd = myStart + myN;
+    int i;
 
 
-    int myStart, myEnd, myN, i;
-    long tid = (long)arg;
     // determine start and end of computation for the current thread
-    myN = N/size;
-    myStart = tid*myN;
-    myEnd = myStart + myN;
-    if (tid == (size-1)) myEnd = N;
+    if (tid == (size-1)){
+      myEnd = N;
+    }
+
     // compute partial sum
     double mysum = 0.0;
     for (i=myStart; i<myEnd; i++)
       mysum += a[i];
+
     // grab the lock, update global sum, and release lock
     pthread_mutex_lock(&mutex);
-    sum += mysum;
+    *(data->sum) += mysum;
     pthread_mutex_unlock(&mutex);
 
     return (NULL);
@@ -48,7 +57,6 @@ void *compute(void *arg) {
 
 int main(int argc, char **argv) {
     long i;
-    pthread_t *tid;
 
     if (argc != 3) {
        printf("Usage: %s <# of elements> <# of threads>\n",argv[0]);
@@ -59,18 +67,31 @@ int main(int argc, char **argv) {
     size = atoi(argv[2]); // no. of threads
 
     // allocate vector and initialize
-    tid = (pthread_t *)malloc(sizeof(pthread_t)*size);
-    a = (double *)malloc(sizeof(double)*N); 
+    pthread_t *threads = malloc(size * sizeof(pthread_t));
+    struct threadVari *params = malloc(size * sizeof(struct threadVari));
+
+    a = malloc(N * sizeof(double));
     for (i=0; i<N; i++)
       a[i] = (double)(i + 1);
 
+
     // create threads
-    for ( i = 0; i < size; i++)
-      pthread_create(&tid[i], NULL, compute, (void *)i);
-    
+    for ( i = 0; i < size; i++){
+        params[i].a = a;
+        params[i].sum = &sum;
+        params[i].N = N;
+        params[i].size = size;
+        params[i].tid = i;
+
+      pthread_create(&threads[i], NULL, compute, &params[i]);
+    }
+
+
     // wait for them to complete
     for ( i = 0; i < size; i++)
-      pthread_join(tid[i], NULL);
+      pthread_join(threads[i], NULL);
+
+
     
     printf("The total is %g, it should be equal to %g\n", 
            sum, ((double)N*(N+1))/2);
