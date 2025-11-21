@@ -56,7 +56,6 @@ void *compute(void *arg) {
 }
 
 int main(int argc, char **argv) {
-    long i;
 
     if (argc != 3) {
        printf("Usage: %s <# of elements> <# of threads>\n",argv[0]);
@@ -71,12 +70,12 @@ int main(int argc, char **argv) {
     struct threadVari *params = malloc(size * sizeof(struct threadVari));
 
     a = malloc(N * sizeof(double));
-    for (i=0; i<N; i++)
+    for (int i=0; i<N; i++)
       a[i] = (double)(i + 1);
 
 
     // create threads
-    for ( i = 0; i < size; i++){
+    for ( int i = 0; i < size; i++){
         params[i].a = a;
         params[i].sum = &sum;
         params[i].N = N;
@@ -88,7 +87,7 @@ int main(int argc, char **argv) {
 
 
     // wait for them to complete
-    for ( i = 0; i < size; i++)
+    for ( int i = 0; i < size; i++)
       pthread_join(threads[i], NULL);
 
 
