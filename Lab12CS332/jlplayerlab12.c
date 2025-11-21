@@ -11,11 +11,13 @@
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
 struct threadVari{
+
   double *a; // 
   double *sum; //
   int N; //
   int size; //
   long tid; //
+  
 };
 double *a=NULL, sum=0.0; 
 int N, size;
