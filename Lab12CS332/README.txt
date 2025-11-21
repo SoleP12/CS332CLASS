@@ -23,7 +23,10 @@ Description -----
             ----------------------
 
             Function main()----
-            In the main function I 
+            In the main function I get the amount of element from the first argv passed and the number of Threads
+            with the second argv passed. I covert the cml strings to ints and allocate the threads and then initalize the struct threadVari. I create multiple
+            threads based upon the second command passed in a for loop and create each thread. I then wait for
+            all threads to complete and output the expected sum and mysum in the threads.
             -------------------
 -----------------
 
