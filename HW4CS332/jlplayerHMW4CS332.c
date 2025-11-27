@@ -36,10 +36,10 @@ pthread_mutex_t pipe_read_mut;
 pthread_mutex_t printf_mut;
 sem_t write_sem;
 
-double toal_sum = 0.0;
+double total_sum = 0.0;
 
 // Random Number Generator
-void generateRandNum(int **arr, int count){
+void generateRandNum(int *arr, int count){
     int used[MAX_VALUE_RAND] = {0};
     int num;
 
@@ -142,7 +142,7 @@ int main(){
             params[i].tid = i;
             params[i].size = CHILD_PRODUCER_THREADS;
             params[i].N = CHILD_NUMBERS_TO_READ;
-            params[i].sum = &toal_sum;
+            params[i].sum = &total_sum;
 
             pthread_create(&consumers[i], NULL, consume, &params[i]);
         }
@@ -153,7 +153,7 @@ int main(){
 
         close(fd[0]);
 
-        double average = toal_sum / CHILD_PRODUCER_THREADS;
+        double average = total_sum / CHILD_PRODUCER_THREADS;
 
         // printed to stdout (user redirects)
         printf("Child: Average = %.2f\n", average);
