@@ -76,6 +76,31 @@ void* producer(void *arg){
 }
 
 
+void* consume(void *arg){
+    struct threadVari *data = (struct threadVari*)arg;
+
+    int tid = data->tid;
+    int amount = data->N;
+    double local_sum = 0.0;
+    int value;
+
+    for (int i = 0; i < amount; i++) {
+        pthread_mutex_lock(&pipe_read_mut);
+        read(fd[0], &value, sizeof(int));
+        pthread_mutex_unlock(&pipe_read_mut);
+
+        local_sum += value;
+    }
+
+    // Lock and update global sum (your pattern)
+    pthread_mutex_lock(&mutex);
+    *(data->sum) += local_sum;
+    pthread_mutex_unlock(&mutex);
+
+    return NULL;
+}
+
+
 
 
 
