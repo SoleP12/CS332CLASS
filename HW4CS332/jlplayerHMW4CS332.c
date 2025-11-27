@@ -8,8 +8,8 @@
 #include <sys/wait.h>
 
 
-// gcc -O -Wall jlplayerHMW4CS332.c -lpthread -- To Compile
-//                                            -- To Run
+// gcc -O -Wall jlplayerHMW4CS332.c -lpthread or make -- To Compile
+// ./jlplayerHMW4CS332 -- To Run
 
 
 #define PARENT_PRODUCER_THREADS 10
@@ -24,10 +24,10 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
 struct threadVari {
-    int tid;            // Thread ID
-    int size;           // Number of consumer threads
-    int N;              // Number of elements this thread should read
-    double *sum;        // Pointer to global sum
+    int tid;            
+    int size;           
+    int N;             
+    double *sum;        
 };
 
 int fd[2];
@@ -79,7 +79,6 @@ void* producer(void *arg){
 void* consume(void *arg){
     struct threadVari *data = (struct threadVari*)arg;
 
-    int tid = data->tid;
     int amount = data->N;
     double local_sum = 0.0;
     int value;
@@ -92,7 +91,7 @@ void* consume(void *arg){
         local_sum += value;
     }
 
-    // Lock and update global sum (your pattern)
+    
     pthread_mutex_lock(&mutex);
     *(data->sum) += local_sum;
     pthread_mutex_unlock(&mutex);
@@ -155,7 +154,7 @@ int main(){
 
         double average = total_sum / CHILD_PRODUCER_THREADS;
 
-        // printed to stdout (user redirects)
+        
         printf("Child: Average = %.2f\n", average);
 
         exit(0);
