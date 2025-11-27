@@ -26,6 +26,7 @@ sem_t write_sem;
 #define CHILD_PRODUCER_THREADS 20
 #define CHILD_NUMBERS_TO_READ 250
 
+double toal_sum = 0.0;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -37,7 +38,7 @@ struct threadVari {
     double *sum;        // Pointer to global sum
 };
 
-
+// Random Number Generator
 int generateRadNum(int **arr, int count){
 
 }
