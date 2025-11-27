@@ -24,7 +24,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
 struct threadVari {
-    int tid;            
+    int tid;           
     int size;           
     int N;             
     double *sum;        
