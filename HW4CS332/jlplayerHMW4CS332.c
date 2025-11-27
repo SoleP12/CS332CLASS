@@ -100,32 +100,65 @@ void* consume(void *arg){
     return NULL;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main(){
     srand(time(NULL));
     if (pipe(fd) == -1) {
         perror("pipe");
         exit(1);
     }
+    pthread_mutex_init(&pipe_mut, NULL);
+    pthread_mutex_init(&printf_mut, NULL);
+    pthread_mutex_init(&pipe_read_mut, NULL);
+    sem_init(&write_sem, 0, 1);
+
+
     pid_t pid = fork();
+
+    if (pid > 0){
+        pthread_t producers[PARENT_PRODUCER_THREADS];
+        int ids[PARENT_PRODUCER_THREADS];
+
+        for (int i = 0; i < PARENT_PRODUCER_THREADS; i++) {
+            ids[i] = i;
+            pthread_create(&producers[i], NULL, producer, &ids[i]);
+        }
+
+        for (int i = 0; i < PARENT_PRODUCER_THREADS; i++) {
+            pthread_join(producers[i], NULL);
+        }
+
+        close(fd[1]);
+
+        wait(NULL);
+        printf("In Parent: Thread Finished\n");
+        return 0;
+    }
+
+    else if(pid == 0){
+        pthread_t consumers[CHILD_PRODUCER_THREADS];
+        struct threadVari params[CHILD_PRODUCER_THREADS];
+
+        for (int i = 0; i < CHILD_PRODUCER_THREADS; i++) {
+            params[i].tid = i;
+            params[i].size = CHILD_PRODUCER_THREADS;
+            params[i].N = CHILD_NUMBERS_TO_READ;
+            params[i].sum = &toal_sum;
+
+            pthread_create(&consumers[i], NULL, consume, &params[i]);
+        }
+
+        for (int i = 0; i < CHILD_PRODUCER_THREADS; i++) {
+            pthread_join(consumers[i], NULL);
+        }
+
+        close(fd[0]);
+
+        double average = toal_sum / CHILD_PRODUCER_THREADS;
+
+        // printed to stdout (user redirects)
+        printf("Child: Average = %.2f\n", average);
+
+        exit(0);
+    }
+    return 0;
 }
